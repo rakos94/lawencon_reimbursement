@@ -25,9 +25,9 @@ func (ReimbursementLimitServiceImpl) GetReimbursementLimitByID(id string) (model
 	return reimbursementLimit.GetReimbursementLimitByID(id)
 }
 
-// GetReimbursementLimitByPersonID ...
-func (ReimbursementLimitServiceImpl) GetReimbursementLimitByPersonID(id string) ([]model.ReimbursementLimit, error) {
-	return reimbursementLimit.GetReimbursementLimitByPersonID(id)
+// GetReimbursementLimitByEmployeeID ...
+func (ReimbursementLimitServiceImpl) GetReimbursementLimitByEmployeeID(id string) ([]model.ReimbursementLimit, error) {
+	return reimbursementLimit.GetReimbursementLimitByEmployeeID(id)
 }
 
 // UpdateReimbursementLimit ...

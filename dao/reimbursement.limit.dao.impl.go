@@ -34,10 +34,10 @@ func (ReimbursementLimitDaoImpl) GetReimbursementLimitByID(id string) (model.Rei
 	return m, nil
 }
 
-// GetReimbursementLimitByPersonID ...
-func (ReimbursementLimitDaoImpl) GetReimbursementLimitByPersonID(id string) ([]model.ReimbursementLimit, error) {
+// GetReimbursementLimitByEmployeeID ...
+func (ReimbursementLimitDaoImpl) GetReimbursementLimitByEmployeeID(id string) ([]model.ReimbursementLimit, error) {
 	m := []model.ReimbursementLimit{}
-	result := g.Where("person_id", id).Find(&m)
+	result := g.Where("employee_id", id).Find(&m)
 	if result.Error != nil {
 		return m, result.Error
 	}
