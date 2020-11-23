@@ -12,8 +12,12 @@ var tables = []interface{}{
 	&model.ReimbursementCategory{},
 	&model.ReimbursementType{},
 	&model.ReimbursementLimit{},
+	&model.ReimbursementApproval{},
+	&model.ReimbursementProcess{},
 }
 
+// Conn connect to db
+// @return connection
 func Conn() (*gorm.DB, error) {
 	pg := fmt.Sprintf("host= %v user=%v password=%v dbname=%v port=%v sslmode=%v", host, user, pass, dbname, port, sslmode)
 	db, err := gorm.Open(postgres.Open(pg), &gorm.Config{})
@@ -25,6 +29,7 @@ func Conn() (*gorm.DB, error) {
 	return db, nil
 }
 
+// MigrateSchema create listed schema based on var tables
 func MigrateSchema(db *gorm.DB) {
 	db.AutoMigrate(tables...)
 }
