@@ -14,6 +14,10 @@ var tables = []interface{}{
 	&model.ReimbursementLimit{},
 	&model.ReimbursementApproval{},
 	&model.ReimbursementProcess{},
+	&model.ReimbursementRequest{},
+	&model.ReimbursementRequestDetail{},
+	&model.ReimbursementRequestStatus{},
+	&model.ReimbursementTravel{},
 }
 
 // Conn connect to db
