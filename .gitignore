@@ -1,3 +1,4 @@
 .idea
 .git
 /main
+variable.go
