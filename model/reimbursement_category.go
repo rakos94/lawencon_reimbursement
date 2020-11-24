@@ -11,5 +11,5 @@ type ReimbursementCategory struct {
 
 // TableName ...
 func (ReimbursementCategory) TableName() string {
-	return "reimbursement_category"
+	return "reimbursement_categories"
 }
