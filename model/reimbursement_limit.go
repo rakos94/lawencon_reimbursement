@@ -3,10 +3,10 @@ package model
 // ReimbursementLimit ...
 type ReimbursementLimit struct {
 	BaseModels
-	EmployeeID        string `gorm:"not null"`
-	ReimbursementCode string `gorm:"not null"`
-	TotalAmount       int64  `gorm:"not null;type:numeric"`
-	UsedAmount        int64  `gorm:"not null;type:numeric;default:0"`
+	EmployeeID        string  `gorm:"not null"`
+	ReimbursementCode string  `gorm:"not null"`
+	TotalAmount       float64 `gorm:"not null;type:numeric"`
+	UsedAmount        float64 `gorm:"not null;type:numeric;default:0"`
 	BaseCUModels
 }
 
