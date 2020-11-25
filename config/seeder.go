@@ -16,7 +16,7 @@ var categoryDao dao.ReimbursementCategoryDao = dao.ReimbursementCategoryDaoImpl{
 func SeederRun() {
 	setConnection()
 	categorySeeder()
-	// typeSeeder()
+	typeSeeder()
 }
 
 func setConnection() {
