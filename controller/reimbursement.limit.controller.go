@@ -3,7 +3,6 @@ package controller
 import (
 	"lawencon/reimbursement/model"
 	"lawencon/reimbursement/service"
-	"log"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -34,8 +33,6 @@ func createLimit(c echo.Context) error {
 	if err := c.Bind(m); err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-
-	log.Println(m)
 
 	result, err := limitService.CreateReimbursementLimit(m)
 	if err != nil {
