@@ -1,12 +1,19 @@
 package dao
 
-import "lawencon/reimbursement/model"
+import (
+	"lawencon/reimbursement/datatype"
+	"lawencon/reimbursement/model"
+	"time"
+)
 
 // ReimbursementProcessDaoImpl ...
 type ReimbursementProcessDaoImpl struct{}
 
 // CreateReimbursementProcess ...
 func (ReimbursementProcessDaoImpl) CreateReimbursementProcess(data *model.ReimbursementProcess) (*model.ReimbursementProcess, error) {
+	now := time.Now()
+	data.PeriodStart = datatype.Date(now)
+	data.PeriodEnd = datatype.Date(now.AddDate(0, 0, 7))
 	result := g.Create(&data)
 	if result.Error != nil {
 		return nil, result.Error
