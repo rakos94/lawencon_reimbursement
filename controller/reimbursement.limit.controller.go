@@ -8,7 +8,9 @@ import (
 	"github.com/labstack/echo"
 )
 
-var limitService service.ReimbursementLimitService = service.ReimbursementLimitServiceImpl{}
+var limitService service.ReimbursementLimitService = service.ReimbursementLimitServiceImpl{
+	TypeService: service.ReimbursementTypeServiceImpl{},
+}
 
 // SetReimbursementLimit ...
 func SetReimbursementLimit(c *echo.Group) {
