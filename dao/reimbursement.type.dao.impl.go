@@ -34,6 +34,16 @@ func (ReimbursementTypeDaoImpl) GetReimbursementTypeByID(id string) (model.Reimb
 	return m, nil
 }
 
+// GetReimbursementTypeByCode ...
+func (ReimbursementTypeDaoImpl) GetReimbursementTypeByCode(code string) (model.ReimbursementType, error) {
+	m := model.ReimbursementType{}
+	result := g.Preload("Category").Where("code", code).First(&m)
+	if result.Error != nil {
+		return m, result.Error
+	}
+	return m, nil
+}
+
 // GetReimbursementTypeByCategoryCode ...
 func (ReimbursementTypeDaoImpl) GetReimbursementTypeByCategoryCode(code string) ([]model.ReimbursementType, error) {
 	m := []model.ReimbursementType{}
