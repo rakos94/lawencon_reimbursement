@@ -10,8 +10,8 @@ import (
 
 var typeService service.ReimbursementTypeService = service.ReimbursementTypeServiceImpl{}
 
-// SetReimbursemetType ...
-func SetReimbursemetType(c *echo.Group) {
+// SetReimbursementType ...
+func SetReimbursementType(c *echo.Group) {
 	r := c.Group("/reimbursement/type")
 	r.GET("", getTypeAll)
 	r.POST("", createType)

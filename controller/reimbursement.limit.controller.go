@@ -10,8 +10,8 @@ import (
 
 var limitService service.ReimbursementLimitService = service.ReimbursementLimitServiceImpl{}
 
-// SetReimbursemetLimit ...
-func SetReimbursemetLimit(c *echo.Group) {
+// SetReimbursementLimit ...
+func SetReimbursementLimit(c *echo.Group) {
 	r := c.Group("/reimbursement/limit")
 	r.GET("", getLimitAll)
 	r.POST("", createLimit)

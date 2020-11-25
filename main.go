@@ -29,10 +29,10 @@ func main() {
 
 	jwtGroup := config.SetJwt(e)
 	config.ClientConnect()
-	controller.SetReimbursemetRequest(jwtGroup)
-	controller.SetReimbursemetCategory(jwtGroup)
-	controller.SetReimbursemetType(jwtGroup)
-	controller.SetReimbursemetLimit(jwtGroup)
+	controller.SetReimbursementRequest(jwtGroup)
+	controller.SetReimbursementCategory(jwtGroup)
+	controller.SetReimbursementType(jwtGroup)
+	controller.SetReimbursementLimit(jwtGroup)
 	controller.SetReimbursementProcess(jwtGroup)
 	e.Logger.Fatal(e.Start(":" + config.AppPort))
 }

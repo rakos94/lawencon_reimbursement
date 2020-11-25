@@ -10,8 +10,8 @@ import (
 
 var categoryService service.ReimbursementCategoryService = service.ReimbursementCategoryServiceImpl{}
 
-// SetReimbursemetCategory ...
-func SetReimbursemetCategory(c *echo.Group) {
+// SetReimbursementCategory ...
+func SetReimbursementCategory(c *echo.Group) {
 	r := c.Group("/reimbursement/category")
 	r.GET("", getCategoryAll)
 	r.POST("", createCategory)
