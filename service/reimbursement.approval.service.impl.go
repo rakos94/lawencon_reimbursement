@@ -69,7 +69,7 @@ func (ReimbursementProcessServiceImpl) ApproveReimbursement(reimbursementID stri
 	process.ReimbursementProcessPaid = *processPaid
 
 	// Create approval with action status
-	mApproval := &model.ReimbursementApproval{ReimbursementID: data.ReimbursementID, Reason: data.Reason, StatusCode: "approved"}
+	mApproval := &model.ReimbursementApproval{ReimbursementRequestID: data.ReimbursementID, Reason: data.Reason, StatusCode: "approved"}
 	approve, err := reimbursementApproval.TxCreateReimbursementApproval(mApproval, tx)
 	if err != nil {
 		tx.Rollback()
