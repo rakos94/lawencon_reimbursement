@@ -32,6 +32,7 @@ func main() {
 	controller.SetReimbursemetRequest(jwtGroup)
 	controller.SetReimbursemetCategory(jwtGroup)
 	controller.SetReimbursemetType(jwtGroup)
+	controller.SetReimbursemetLimit(jwtGroup)
 	e.Logger.Fatal(e.Start(":" + config.AppPort))
 }
 
