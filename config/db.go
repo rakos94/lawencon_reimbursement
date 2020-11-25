@@ -18,6 +18,7 @@ var tables = []interface{}{
 	&model.ReimbursementRequestDetail{},
 	&model.ReimbursementRequestStatus{},
 	&model.ReimbursementTravel{},
+	&model.ReimbursementProcessPaid{},
 }
 
 // Conn connect to db
@@ -34,6 +35,6 @@ func Conn() (*gorm.DB, error) {
 }
 
 // MigrateSchema create listed schema based on var tables
-func MigrateSchema(db *gorm.DB) {
-	db.AutoMigrate(tables...)
+func MigrateSchema(db *gorm.DB) error {
+	return db.AutoMigrate(tables...)
 }
