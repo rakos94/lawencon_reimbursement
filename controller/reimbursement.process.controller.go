@@ -2,6 +2,7 @@ package controller
 
 import (
 	"lawencon/reimbursement/model"
+	"lawencon/reimbursement/request"
 	"lawencon/reimbursement/service"
 	"net/http"
 
@@ -18,6 +19,9 @@ func SetReimbursementProcess(c *echo.Group) {
 	r.GET("/:id", getProcessByID)
 	r.PUT("/:id", updateProcess)
 	r.GET("/request/:requestID", getProcessByEmployeeID)
+
+	r.POST("/:id/approved", approvalApproved)
+	r.POST("/:id/cancel", approvalCancel)
 }
 
 func getProcessAll(c echo.Context) error {
@@ -70,6 +74,34 @@ func getProcessByEmployeeID(c echo.Context) error {
 	requestID := c.Param("requestID")
 
 	result, err := processService.GetReimbursementProcessByRequestID(requestID)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, result)
+}
+
+func approvalApproved(c echo.Context) error {
+	id := c.Param("id")
+	m := &request.ReimbursementApprovedRequest{}
+	if err := c.Bind(m); err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+
+	result, err := approvalService.ApproveReimbursement(id, m)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, result)
+}
+
+func approvalCancel(c echo.Context) error {
+	id := c.Param("id")
+	m := &request.ReimbursementApprovedRequest{}
+	if err := c.Bind(m); err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+
+	result, err := approvalService.CancelReimbursement(id, m)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}

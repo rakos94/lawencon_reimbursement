@@ -8,7 +8,9 @@ import (
 	"github.com/labstack/echo"
 )
 
-var typeService service.ReimbursementTypeService = service.ReimbursementTypeServiceImpl{}
+var typeService service.ReimbursementTypeService = service.ReimbursementTypeServiceImpl{
+	CategoryService: service.ReimbursementCategoryServiceImpl{},
+}
 
 // SetReimbursementType ...
 func SetReimbursementType(c *echo.Group) {

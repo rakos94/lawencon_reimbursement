@@ -34,6 +34,16 @@ func (ReimbursementCategoryDaoImpl) GetReimbursementCategoryByID(id string) (mod
 	return m, nil
 }
 
+// GetReimbursementCategoryByCode ...
+func (ReimbursementCategoryDaoImpl) GetReimbursementCategoryByCode(code string) (model.ReimbursementCategory, error) {
+	m := model.ReimbursementCategory{}
+	result := g.Where("code", code).First(&m)
+	if result.Error != nil {
+		return m, result.Error
+	}
+	return m, nil
+}
+
 // UpdateReimbursementCategory ...
 func (ReimbursementCategoryDaoImpl) UpdateReimbursementCategory(id string, data *model.ReimbursementCategory) (*model.ReimbursementCategory, error) {
 	m := &model.ReimbursementCategory{}

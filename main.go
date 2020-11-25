@@ -36,6 +36,9 @@ func main() {
 	controller.SetReimbursementProcess(jwtGroup)
 	controller.SetReimbursementRequestDetail(jwtGroup)
 	controller.SetReimbursementRequestStatus(jwtGroup)
+	controller.SetReimbursementProcessPaid(jwtGroup)
+	controller.SetReimbursementApproval(jwtGroup)
+
 	e.Logger.Fatal(e.Start(":" + config.AppPort))
 }
 
