@@ -3,10 +3,10 @@ package model
 // ReimbursementApproval ...
 type ReimbursementApproval struct {
 	BaseModels
-	ReimbursementID string                     `gorm:"not null"`
-	Reason          string                     `gorm:"not null"`
-	StatusCode      string                     `gorm:"not null"`
-	Status          ReimbursementRequestStatus `gorm:"foreignKey:StatusCode"`
+	ReimbursementID string                      `gorm:"not null" json:"reimbursement_id"`
+	Reason          string                      `gorm:"not null" json:"reason"`
+	StatusCode      string                      `gorm:"not null" json:"status_code"`
+	Status          *ReimbursementRequestStatus `gorm:"foreignKey:StatusCode;references:StatusCode" json:"status,omitempty"`
 	BaseCUModels
 }
 
