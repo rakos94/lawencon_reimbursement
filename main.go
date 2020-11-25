@@ -31,6 +31,7 @@ func main() {
 	config.ClientConnect()
 	controller.SetReimbursemetRequest(jwtGroup)
 	controller.SetReimbursemetCategory(jwtGroup)
+	controller.SetReimbursemetType(jwtGroup)
 	e.Logger.Fatal(e.Start(":" + config.AppPort))
 }
 
