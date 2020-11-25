@@ -34,6 +34,7 @@ func main() {
 	controller.SetReimbursementType(jwtGroup)
 	controller.SetReimbursementLimit(jwtGroup)
 	controller.SetReimbursementProcess(jwtGroup)
+	controller.SetReimbursementProcessPaid(jwtGroup)
 	e.Logger.Fatal(e.Start(":" + config.AppPort))
 }
 
