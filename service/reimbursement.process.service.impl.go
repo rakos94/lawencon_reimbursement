@@ -25,9 +25,9 @@ func (ReimbursementProcessServiceImpl) GetReimbursementProcessByID(id string) (m
 	return reimbursementProcess.GetReimbursementProcessByID(id)
 }
 
-// GetReimbursementProcessByReimbursementID ...
-func (ReimbursementProcessServiceImpl) GetReimbursementProcessByReimbursementID(id string) (model.ReimbursementProcess, error) {
-	return reimbursementProcess.GetReimbursementProcessByReimbursementID(id)
+// GetReimbursementProcessByRequestID ...
+func (ReimbursementProcessServiceImpl) GetReimbursementProcessByRequestID(id string) (model.ReimbursementProcess, error) {
+	return reimbursementProcess.GetReimbursementProcessByRequestID(id)
 }
 
 // UpdateReimbursementProcess ...

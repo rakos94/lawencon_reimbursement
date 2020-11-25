@@ -34,10 +34,10 @@ func (ReimbursementProcessDaoImpl) GetReimbursementProcessByID(id string) (model
 	return m, nil
 }
 
-// GetReimbursementProcessByReimbursementID ...
-func (ReimbursementProcessDaoImpl) GetReimbursementProcessByReimbursementID(id string) (model.ReimbursementProcess, error) {
+// GetReimbursementProcessByRequestID ...
+func (ReimbursementProcessDaoImpl) GetReimbursementProcessByRequestID(id string) (model.ReimbursementProcess, error) {
 	m := model.ReimbursementProcess{}
-	result := g.Where("reimbursement_id", id).Find(&m)
+	result := g.Where("reimbursement_request_id", id).Find(&m)
 	if result.Error != nil {
 		return m, result.Error
 	}
