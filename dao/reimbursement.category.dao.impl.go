@@ -27,7 +27,7 @@ func (ReimbursementCategoryDaoImpl) GetReimbursementCategoryAll() ([]model.Reimb
 // GetReimbursementCategoryByID ...
 func (ReimbursementCategoryDaoImpl) GetReimbursementCategoryByID(id string) (model.ReimbursementCategory, error) {
 	m := model.ReimbursementCategory{}
-	result := g.Where("id", id).First(&m)
+	result := g.Preload("Type").Where("id", id).First(&m)
 	if result.Error != nil {
 		return m, result.Error
 	}

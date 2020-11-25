@@ -27,7 +27,7 @@ func (ReimbursementTypeDaoImpl) GetReimbursementTypeAll() ([]model.Reimbursement
 // GetReimbursementTypeByID ...
 func (ReimbursementTypeDaoImpl) GetReimbursementTypeByID(id string) (model.ReimbursementType, error) {
 	m := model.ReimbursementType{}
-	result := g.Where("id", id).First(&m)
+	result := g.Preload("Category").Where("id", id).First(&m)
 	if result.Error != nil {
 		return m, result.Error
 	}
