@@ -2,13 +2,15 @@ package service
 
 import (
 	"lawencon/reimbursement/dao"
+	"lawencon/reimbursement/helper"
 	"lawencon/reimbursement/model"
 )
 
 var reimbursementDao dao.ReimbursementRequestDao =dao.ReimbursementRequestDaoImpl{}
 type ReimbursementRequestServiceimpl struct {}
 
-func (ReimbursementRequestServiceimpl)CreateReimbursementRequest(data * model.ReimbursementRequest) error  {
+func (ReimbursementRequestServiceimpl)CreateReimbursementRequest(data * model.ReimbursementRequest) (e error)  {
+	defer helper.CatchError(&e)
 	return  reimbursementDao.CreateReimbursementRequest(data)
 }
 func (ReimbursementRequestServiceimpl)GetAllReimbursementRequest()([]model.ReimbursementRequest,error)  {
