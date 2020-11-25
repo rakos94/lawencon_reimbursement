@@ -5,7 +5,7 @@ import "lawencon/reimbursement/datatype"
 // ReimbursementProcess ...
 type ReimbursementProcess struct {
 	BaseModels
-	ReimbursementID          string                   `gorm:"not null"`
+	ReimbursementRequestID   string                   `gorm:"not null"`
 	PeriodStart              datatype.Date            `gorm:"not null;type:date"`
 	PeriodEnd                datatype.Date            `gorm:"not null;type:date"`
 	ReimbursementProcessPaid ReimbursementProcessPaid `gorm:"foreignKey:ReimbursementProcessID"`
