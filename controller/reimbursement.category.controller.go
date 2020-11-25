@@ -12,9 +12,11 @@ var categoryService service.ReimbursementCategoryService = service.Reimbursement
 
 // SetReimbursemetCategory ...
 func SetReimbursemetCategory(c *echo.Group) {
-	group := c.Group("/reimbursement/category")
-	group.GET("", getCategoryAll)
-	group.POST("", createCategory)
+	r := c.Group("/reimbursement/category")
+	r.GET("", getCategoryAll)
+	r.POST("", createCategory)
+	r.GET("/:id", getCategoryByID)
+	r.PUT("/:id", updateCategory)
 }
 
 func getCategoryAll(c echo.Context) error {
@@ -32,6 +34,31 @@ func createCategory(c echo.Context) error {
 	}
 
 	result, err := categoryService.CreateReimbursementCategory(m)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, result)
+}
+
+func getCategoryByID(c echo.Context) error {
+	id := c.Param("id")
+
+	result, err := categoryService.GetReimbursementCategoryByID(id)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, result)
+}
+
+func updateCategory(c echo.Context) error {
+	id := c.Param("id")
+
+	m := &model.ReimbursementCategory{}
+	if err := c.Bind(m); err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+
+	result, err := categoryService.UpdateReimbursementCategory(id, m)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
