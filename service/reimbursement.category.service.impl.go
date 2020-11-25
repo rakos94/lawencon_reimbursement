@@ -25,6 +25,11 @@ func (ReimbursementCategoryServiceImpl) GetReimbursementCategoryByID(id string) 
 	return reimbursementCategory.GetReimbursementCategoryByID(id)
 }
 
+// GetReimbursementCategoryByCode ...
+func (ReimbursementCategoryServiceImpl) GetReimbursementCategoryByCode(code string) (model.ReimbursementCategory, error) {
+	return reimbursementCategory.GetReimbursementCategoryByCode(code)
+}
+
 // UpdateReimbursementCategory ...
 func (ReimbursementCategoryServiceImpl) UpdateReimbursementCategory(id string, data *model.ReimbursementCategory) (*model.ReimbursementCategory, error) {
 	return reimbursementCategory.UpdateReimbursementCategory(id, data)
