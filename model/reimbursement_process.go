@@ -9,6 +9,7 @@ type ReimbursementProcess struct {
 	PeriodStart              datatype.Date            `gorm:"not null;type:date"`
 	PeriodEnd                datatype.Date            `gorm:"not null;type:date"`
 	ReimbursementProcessPaid ReimbursementProcessPaid `gorm:"foreignKey:ReimbursementProcessID"`
+	ReimbursementRequest     ReimbursementRequest     `gorm:"foreignKey:ReimbursementRequestID"`
 	BaseCUModels
 }
 
