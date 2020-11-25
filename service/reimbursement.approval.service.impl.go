@@ -50,7 +50,7 @@ func (ReimbursementProcessServiceImpl) ApproveReimbursement(reimbursementID stri
 	// }
 
 	// Check reimbursement process exist
-	process, err := reimbursementProcess.GetReimbursementProcessByReimbursementID(reimbursementID)
+	process, err := reimbursementProcess.GetReimbursementProcessByRequestID(reimbursementID)
 	if err != nil {
 		return nil, errors.New("Reimbursement Process not exist")
 	}
