@@ -38,10 +38,10 @@ func (ReimbursementLimitServiceImpl) GetReimbursementLimitByEmployeeID(id string
 }
 
 // UpdateReimbursementLimit ...
-func (ReimbursementLimitServiceImpl) UpdateReimbursementLimit(id string, data *model.ReimbursementLimit) (*model.ReimbursementLimit, error) {
-	_, err := reimbursementType.GetReimbursementTypeByCategoryCode(data.ReimbursementTypeCode)
+func (r ReimbursementLimitServiceImpl) UpdateReimbursementLimit(id string, data *model.ReimbursementLimit) (*model.ReimbursementLimit, error) {
+	_, err := r.TypeService.GetReimbursementTypeByCode(data.ReimbursementTypeCode)
 	if err != nil {
-		return nil, errors.New("Reimbursement Type not exist")
+		return nil, errors.New("Reimbursement Type Code not exist")
 	}
 	return reimbursementLimit.UpdateReimbursementLimit(id, data)
 }
