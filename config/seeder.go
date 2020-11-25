@@ -11,12 +11,14 @@ import (
 var g *gorm.DB
 var typeDao dao.ReimbursementTypeDao = dao.ReimbursementTypeDaoImpl{}
 var categoryDao dao.ReimbursementCategoryDao = dao.ReimbursementCategoryDaoImpl{}
+var statusDao dao.ReimbursementRequestStatusDao = dao.ReimbursementRequestStatusDaoImpl{}
 
 // SeederRun ...
 func SeederRun() {
 	setConnection()
 	categorySeeder()
 	typeSeeder()
+	statusSeeder()
 }
 
 func setConnection() {
@@ -60,6 +62,24 @@ func typeSeeder() {
 		}
 	}
 	log.Println(model.ReimbursementType{}.TableName(), "seeder created")
+}
+
+func statusSeeder() {
+	truncateTable(model.ReimbursementRequestStatus{}.TableName())
+	data := []model.ReimbursementRequestStatus{
+		{StatusCode: "PEND", Name: "Pending"},
+		{StatusCode: "APRV", Name: "Approve"},
+		{StatusCode: "CANC", Name: "Cancel"},
+		{StatusCode: "PROC", Name: "Process"},
+	}
+
+	for _, d := range data {
+		err := statusDao.CreateReimbursementRequestStatus(&d)
+		if err != nil {
+			log.Println(err.Error())
+		}
+	}
+	log.Println(model.ReimbursementRequestStatus{}.TableName(), "seeder created")
 }
 
 func truncateTable(tableName string) {

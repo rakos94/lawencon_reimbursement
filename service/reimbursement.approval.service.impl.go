@@ -11,6 +11,7 @@ var reimbursementApproval dao.ReimbursementApprovalDao = dao.ReimbursementApprov
 var reimbursementRequestService ReimbursementRequestService = ReimbursementRequestServiceimpl{}
 var reimbursementProcessService ReimbursementProcessService = ReimbursementProcessServiceImpl{}
 var reimbursementProcessPaidService ReimbursementProcessPaidService = ReimbursementProcessPaidServiceImpl{}
+var reimbursementRequestStatusService ReimbursementRequestStatusService = ReimbursementRequestStatusServiceImpl{}
 
 // ReimbursementApprovalServiceImpl ...
 type ReimbursementApprovalServiceImpl struct{}
@@ -46,7 +47,7 @@ func (ReimbursementApprovalServiceImpl) ApproveReimbursement(processID string, d
 		return nil, errors.New("Reimbursement Process not exist")
 	}
 
-	if data.StatusCode != "approved" {
+	if data.StatusCode != "APRV" {
 		return nil, errors.New("Status not approved")
 	}
 
@@ -88,6 +89,12 @@ func (ReimbursementApprovalServiceImpl) ApproveReimbursement(processID string, d
 
 	// TODO
 	// UPDATE REIMBURSEMENT STATUS_CODE TO APPROVED
+	reimburseRequest := &model.ReimbursementRequest{StatusCode: data.StatusCode}
+	err = reimbursementRequestService.UpdateReimbursementRequest(process.ReimbursementRequestID, reimburseRequest)
+	if err != nil {
+		tx.Rollback()
+		return nil, err
+	}
 
 	tx.Commit()
 	return approve, err
@@ -104,7 +111,7 @@ func (ReimbursementApprovalServiceImpl) CancelReimbursement(processID string, da
 		return nil, errors.New("Reimbursement Process not exist")
 	}
 
-	if data.StatusCode != "cancel" {
+	if data.StatusCode != "CANC" {
 		return nil, errors.New("Status not cancel")
 	}
 
@@ -121,7 +128,13 @@ func (ReimbursementApprovalServiceImpl) CancelReimbursement(processID string, da
 	}
 
 	// TODO
-	// UPDATE REIMBURSEMENT STATUS_CODE TO APPROVED
+	// UPDATE REIMBURSEMENT STATUS_CODE TO CANCEL
+	reimburseRequest := &model.ReimbursementRequest{StatusCode: data.StatusCode}
+	err = reimbursementRequestService.UpdateReimbursementRequest(process.ReimbursementRequestID, reimburseRequest)
+	if err != nil {
+		tx.Rollback()
+		return nil, err
+	}
 
 	tx.Commit()
 	return cancel, err
