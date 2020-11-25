@@ -59,7 +59,7 @@ func typeSeeder() {
 			log.Println(err.Error())
 		}
 	}
-	log.Println(model.ReimbursementCategory{}.TableName(), "seeder created")
+	log.Println(model.ReimbursementType{}.TableName(), "seeder created")
 }
 
 func truncateTable(tableName string) {
