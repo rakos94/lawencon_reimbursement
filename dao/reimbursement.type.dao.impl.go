@@ -34,10 +34,10 @@ func (ReimbursementTypeDaoImpl) GetReimbursementTypeByID(id string) (model.Reimb
 	return m, nil
 }
 
-// GetReimbursementTypeByCategoryID ...
-func (ReimbursementTypeDaoImpl) GetReimbursementTypeByCategoryID(id string) ([]model.ReimbursementType, error) {
+// GetReimbursementTypeByCategoryCode ...
+func (ReimbursementTypeDaoImpl) GetReimbursementTypeByCategoryCode(code string) ([]model.ReimbursementType, error) {
 	m := []model.ReimbursementType{}
-	result := g.Where("category_id", id).Find(&m)
+	result := g.Where("category_code", code).Find(&m)
 	if result.Error != nil {
 		return m, result.Error
 	}

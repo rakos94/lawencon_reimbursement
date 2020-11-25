@@ -25,9 +25,9 @@ func (ReimbursementTypeServiceImpl) GetReimbursementTypeByID(id string) (model.R
 	return reimbursementType.GetReimbursementTypeByID(id)
 }
 
-// GetReimbursementTypeByCategoryID ...
-func (ReimbursementTypeServiceImpl) GetReimbursementTypeByCategoryID(id string) ([]model.ReimbursementType, error) {
-	return reimbursementType.GetReimbursementTypeByCategoryID(id)
+// GetReimbursementTypeByCategoryCode ...
+func (ReimbursementTypeServiceImpl) GetReimbursementTypeByCategoryCode(code string) ([]model.ReimbursementType, error) {
+	return reimbursementType.GetReimbursementTypeByCategoryCode(code)
 }
 
 // UpdateReimbursementType ...
