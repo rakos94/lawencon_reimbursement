@@ -4,7 +4,7 @@ package model
 type ReimbursementCategory struct {
 	BaseModels
 	Name string              `gorm:"not null"`
-	Code string              `gorm:"not null"`
+	Code string              `gorm:"not null;uniqueIndex"`
 	Type []ReimbursementType `gorm:"foreignKey:CategoryCode"`
 	BaseCUModels
 }

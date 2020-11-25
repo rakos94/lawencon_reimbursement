@@ -6,7 +6,7 @@ type ReimbursementType struct {
 	Name         string                `gorm:"not null"`
 	Code         string                `gorm:"not null"`
 	CategoryCode string                `gorm:"not null"`
-	Category     ReimbursementCategory `gorm:"foreignKey:CategoryCode"`
+	Category     ReimbursementCategory `gorm:"foreignKey:CategoryCode;references:code"`
 	BaseCUModels
 }
 
