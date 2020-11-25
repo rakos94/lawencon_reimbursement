@@ -27,7 +27,7 @@ func (ReimbursementLimitDaoImpl) GetReimbursementLimitAll() ([]model.Reimburseme
 // GetReimbursementLimitByID ...
 func (ReimbursementLimitDaoImpl) GetReimbursementLimitByID(id string) (model.ReimbursementLimit, error) {
 	m := model.ReimbursementLimit{}
-	result := g.Where("id", id).First(&m)
+	result := g.Preload("Type").Where("id", id).First(&m)
 	if result.Error != nil {
 		return m, result.Error
 	}
