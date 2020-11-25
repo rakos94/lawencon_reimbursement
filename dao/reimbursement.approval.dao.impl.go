@@ -38,10 +38,10 @@ func (ReimbursementApprovalDaoImpl) GetReimbursementApprovalByID(id string) (mod
 	return m, nil
 }
 
-// GetReimbursementApprovalByReimbursementID ...
-func (ReimbursementApprovalDaoImpl) GetReimbursementApprovalByReimbursementID(id string) ([]model.ReimbursementApproval, error) {
-	m := []model.ReimbursementApproval{}
-	result := g.Where("reimbursement_id", id).Find(&m)
+// GetReimbursementApprovalByRequestID ...
+func (ReimbursementApprovalDaoImpl) GetReimbursementApprovalByRequestID(requestID string) (model.ReimbursementApproval, error) {
+	m := model.ReimbursementApproval{}
+	result := g.Where("reimbursement_request_id", requestID).Find(&m)
 	if result.Error != nil {
 		return m, result.Error
 	}
