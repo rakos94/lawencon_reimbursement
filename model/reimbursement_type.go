@@ -3,9 +3,9 @@ package model
 // ReimbursementType ...
 type ReimbursementType struct {
 	BaseModels
-	Name         string                 `gorm:"not null" json:"name"`
-	Code         string                 `gorm:"not null;uniqueIndex" json:"code"`
 	CategoryCode string                 `gorm:"not null" json:"category_code"`
+	Code         string                 `gorm:"not null;uniqueIndex" json:"code"`
+	Name         string                 `gorm:"not null" json:"name"`
 	Category     *ReimbursementCategory `gorm:"foreignKey:CategoryCode;references:Code" json:"category,omitempty"`
 	BaseCUModels
 }
