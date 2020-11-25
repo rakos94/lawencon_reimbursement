@@ -48,7 +48,7 @@ func (ReimbursementApprovalServiceImpl) ApproveReimbursement(processID string, d
 	}
 
 	if data.StatusCode != "APRV" {
-		return nil, errors.New("Status not approved")
+		return nil, errors.New("Wrong Status code")
 	}
 
 	if data.PaidDate == nil {
@@ -112,7 +112,7 @@ func (ReimbursementApprovalServiceImpl) CancelReimbursement(processID string, da
 	}
 
 	if data.StatusCode != "CANC" {
-		return nil, errors.New("Status not cancel")
+		return nil, errors.New("Wrong Status code")
 	}
 
 	// Create approval with action status
